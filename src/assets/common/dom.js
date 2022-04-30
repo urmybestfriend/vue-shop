@@ -11,10 +11,21 @@ const domFunc = (e) => {
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const isNumeric = n => !isNaN(parseFloat(n)) && isFinite(n);
+const isDomInPathFunc = (args) => {
+  const {
+    path,
+    selector
+  } = args;
+  for (let i = 0; i < path.length; i += 1) {
+    if (path[i] === document.querySelector(selector)) {
+      return path[i];
+    } else if (path[i] === document.body) {
+      return false;
+    }
+  }
+};
 
-// 添加Array属性
-const addArrProp = e => Array.prototype.slice.call(e);
-// 只能判断精确到个体dom元素，无法判断一个系列的dom是否处于点击范围
+
 const isDomInPathFunc = (args) => {
   const {
     path,
