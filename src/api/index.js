@@ -12,12 +12,8 @@ export default {
               goods_image: arr.goods_image.replace(/#/, '')
 
               // new branch code
-
-
-
-              
-
-            }))
+              //adfadsfa
+}))
         );
       }).catch(err=>reject(err))
     })
