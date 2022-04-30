@@ -2,10 +2,10 @@
 import axios from 'axios'
 
 export default {
-  getStore({url}){
+  getStore({urls}){
     return new Promise((resolve, reject) => {
-      axios.get(url).then(res => {
-        //两个请求现在都完成
+      axios.get(urls).then(res => {
+       
         resolve(
           res.data.rows
             .map(arr => Object.assign({}, arr, {
@@ -15,10 +15,23 @@ export default {
       }).catch(err=>reject(err))
     })
   },
-  getOrderlist({url}){
+  getOrderlist({urlss}){
     return new Promise((resolve, reject) => {
-      axios.get(url).then(res => {
-        //两个请求现在都完成
+      axios.get(urls).then(res => {
+      
+        resolve(
+          res.data.rows
+            .map(arr => Object.assign({}, arr, {
+              goods_image: arr.goods_image.replace(/#/, '')
+            }))
+        );
+      }).catch(err=>reject(err))
+    })
+  },
+  getOrderlist({urlss}){
+    return new Promise((resolve, reject) => {
+      axios.get(urls).then(res => {
+      
         resolve(
           res.data.rows
             .map(arr => Object.assign({}, arr, {
