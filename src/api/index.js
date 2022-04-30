@@ -10,6 +10,13 @@ export default {
           res.data.rows
             .map(arr => Object.assign({}, arr, {
               goods_image: arr.goods_image.replace(/#/, '')
+
+              // new branch code
+
+
+
+              
+
             }))
         );
       }).catch(err=>reject(err))
